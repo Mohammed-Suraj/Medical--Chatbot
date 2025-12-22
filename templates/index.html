@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical Awareness Chatbot</title>
+<link rel="stylesheet" href="/static/style.css">
+
+<script>
+let lang = "en";
+
+function switchLang(){
+    lang = lang === "en" ? "ta" : "en";
+    document.getElementById("langBtn").innerText = lang === "en" ? "English" : "Tamil";
+}
+
+let selectedTamilVoice = null;
+
+function speak(text){
+    const synth = window.speechSynthesis;
+
+    function speakNow(){
+        let voices = synth.getVoices();
+        let utter = new SpeechSynthesisUtterance(text);
+
+        if(lang === "en"){
+            utter.lang = "en-IN";
+            utter.voice = voices.find(v => v.lang.includes("en"));
+            utter.rate = 1;
+        } 
+        else {
+            // Try to FORCE Tamil voice
+            let tamilVoices = voices.filter(v =>
+                v.lang.toLowerCase().includes("ta") ||
+                v.name.toLowerCase().includes("tamil") ||
+                v.name.toLowerCase().includes("india")
+            );
+
+            if(tamilVoices.length){
+                utter.voice = tamilVoices[0];
+                selectedTamilVoice = tamilVoices[0];
+            } else if(selectedTamilVoice){
+                utter.voice = selectedTamilVoice;
+            }
+
+            utter.lang = "ta-IN";
+            utter.rate = 0.9;
+            utter.pitch = 1.1;
+        }
+
+        synth.cancel();
+        synth.speak(utter);
+    }
+
+    if(synth.getVoices().length === 0){
+        synth.onvoiceschanged = speakNow;
+    } else {
+        speakNow();
+    }
+}
+
+        
+async function sendMessage(){
+    let input = document.getElementById("userInput").value;
+    if(input === "") return;
+
+    addMessage("You", input);
+
+    const res = await fetch("/chat", {
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify({ message: input, lang: lang })
+    });
+    const data = await res.json();
+    addMessage("Bot", data.reply);
+    speak(data.reply);
+
+    document.getElementById("userInput").value = "";
+}
+
+function addMessage(sender, text){
+    let chat = document.getElementById("chat");
+    chat.innerHTML += `<p><b>${sender}:</b> ${text.replace(/\n/g,'<br>')}</p>`;
+    chat.scrollTop = chat.scrollHeight;
+    saveChat();
+}
+function voiceInput(){
+    const recog = new webkitSpeechRecognition();
+
+    recog.lang = (lang === "en") ? "en-IN" : "ta-IN";
+    recog.interimResults = false;
+    recog.continuous = false;
+
+    recog.start();
+
+    recog.onresult = function(e){
+        let text = e.results[0][0].transcript;
+        document.getElementById("userInput").value = text;
+        sendMessage();
+    }
+
+    recog.onerror = function(){
+        alert("Voice input failed. Try again.");
+    }
+}
+
+
+    recog.onerror = function(){
+        alert("Voice input failed. Try again.");
+    }
+
+
+function saveChat(){
+    localStorage.setItem("chatHistory", document.getElementById("chat").innerHTML);
+}
+
+function loadChat(){
+    let history = localStorage.getItem("chatHistory");
+    if(history){
+        document.getElementById("chat").innerHTML = history;
+    }
+}
+window.onload = loadChat;
+function toggleTheme(){
+    document.body.classList.toggle("dark");
+    document.querySelector(".container").classList.toggle("dark");
+    document.getElementById("chat").classList.toggle("dark");
+
+    document.querySelectorAll("button").forEach(btn=>{
+        btn.classList.toggle("dark");
+    });
+
+    let mode = document.body.classList.contains("dark") ? "dark" : "light";
+    localStorage.setItem("theme", mode);
+
+    document.getElementById("themeBtn").innerText =
+        mode === "dark" ? "☀️ Light" : "🌙 Dark";
+}
+
+// Load theme
+window.addEventListener("load", ()=>{
+    if(localStorage.getItem("theme")==="dark"){
+        toggleTheme();
+    }
+});
+function stopVoice(){
+    window.speechSynthesis.cancel();
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+<h2>🩺 Medical Awareness Chatbot</h2>
+
+<div id="chat" class="chat-box"></div>
+
+<div class="input-area">
+<input id="userInput" placeholder="Type your symptoms...">
+<button onclick="sendMessage()">Send</button>
+<button onclick="voiceInput()">🎤 Voice</button>
+<button id="langBtn" onclick="switchLang()">English</button>
+<button id="themeBtn" onclick="toggleTheme()">🌙 Dark</button>
+<button onclick="stopVoice()">⛔ Stop</button>
+<p id="speaking" style="display:none;color:#00ff6a;">🎤 Bot is speaking...</p>
+
+
+</div>
+
+<p class="note">
+⚠️ This chatbot is for awareness only. Not a medical diagnosis.
+</p>
+
+</div>
+
+</body>
+</html>

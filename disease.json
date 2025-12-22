@@ -1,0 +1,101 @@
+{
+  "dengue": {
+    "symptoms": ["fever", "headache", "vomiting", "body pain", "rash"],
+    "info_en": "Dengue is a mosquito-borne viral infection.",
+    "info_ta": "டெங்கு என்பது கொசுக்களால் பரவும் வைரஸ் நோயாகும்.",
+    "prevention_en": "Use mosquito nets, avoid stagnant water.",
+    "prevention_ta": "நீர் தேங்க விடாதீர்கள், கொசு வலை பயன்படுத்தவும்.",
+    "doctor_en": "See doctor if fever > 2 days.",
+    "doctor_ta": "காய்ச்சல் 2 நாட்களுக்கு மேல் இருந்தால் மருத்துவரை பார்க்கவும்."
+  },
+
+  "malaria": {
+    "symptoms": ["fever", "chills", "sweating", "headache"],
+    "info_en": "Malaria is caused by parasites spread by mosquitoes.",
+    "info_ta": "கொசுக்களின் மூலம் பரவும் பராசிட்டால் மலேரியா ஏற்படுகிறது.",
+    "prevention_en": "Avoid mosquito bites.",
+    "prevention_ta": "கொசு கடியதை தவிர்க்கவும்.",
+    "doctor_en": "Seek medical help if severe.",
+    "doctor_ta": "அதிகமாயிருந்தால் மருத்துவரை அணுகவும்."
+  },
+
+  "typhoid": {
+    "symptoms": ["fever", "weakness", "stomach pain", "headache", "diarrhea"],
+    "info_en": "Typhoid spreads through contaminated food and water.",
+    "info_ta": "அழுக்கு உணவு மற்றும் நீர் மூலம் டைபாய்டு ஏற்படுகிறது.",
+    "prevention_en": "Drink clean water & maintain hygiene.",
+    "prevention_ta": "தூய்மையான நீர் குடிக்கவும், சுத்தமாக இருங்கள்.",
+    "doctor_en": "Consult doctor for treatment.",
+    "doctor_ta": "மருத்துவரை அணுகவும்."
+  },
+
+  "tuberculosis": {
+    "symptoms": ["cough", "blood cough", "weight loss", "night sweat", "fever"],
+    "info_en": "TB is a serious lung infection.",
+    "info_ta": "டிபி ஒரு தீவிர நுரையீரல் தொற்றுநோயாகும்.",
+    "prevention_en": "Cover mouth while coughing, avoid close contact.",
+    "prevention_ta": "இருமும் போது மூடியைப் பயன்படுத்தவும்.",
+    "doctor_en": "Immediate medical care required.",
+    "doctor_ta": "உடனடி சிகிச்சை அவசியம்."
+  },
+
+  "viral fever": {
+    "symptoms": ["fever", "tired", "cold", "body pain"],
+    "info_en": "Viral fever usually caused by viral infections.",
+    "info_ta": "வைரஸ் தொற்றால் ஏற்படும் பொதுவான காய்ச்சல்.",
+    "prevention_en": "Rest & drink water.",
+    "prevention_ta": "ஓய்வு எடுத்து நீர் அதிகம் குடிக்கவும்.",
+    "doctor_en": "If >3 days consult doctor.",
+    "doctor_ta": "3 நாட்களுக்கு மேல் இருந்தால் மருத்துவரை பார்க்கவும்."
+  },
+
+  "cold": {
+    "symptoms": ["cold", "sneezing", "runny nose", "throat pain"],
+    "info_en": "Common cold affects respiratory system.",
+    "info_ta": "நுரையீரல் மற்றும் மூச்சுத் தொண்டையை பாதிக்கும் சாதாரண சளி.",
+    "prevention_en": "Avoid cold drinks, rest well.",
+    "prevention_ta": "குளிர்ந்த பானங்களை தவிர்க்கவும்.",
+    "doctor_en": "If breathing trouble → doctor",
+    "doctor_ta": "மூச்சு சிரமம் இருந்தால் மருத்துவரை பார்க்கவும்."
+  },
+
+  "asthma": {
+    "symptoms": ["breath problem", "chest tight", "wheezing", "cough"],
+    "info_en": "Asthma affects airway breathing.",
+    "info_ta": "ஆஸ்துமா மூச்சு பாதையை பாதிக்கும்.",
+    "prevention_en": "Avoid dust & smoke.",
+    "prevention_ta": "தூசி மற்றும் புகையை தவிர்க்கவும்.",
+    "doctor_en": "Seek doctor if severe.",
+    "doctor_ta": "அதிகமானால் மருத்துவரை அணுகவும்."
+  },
+
+  "diabetes": {
+    "symptoms": ["frequent urination", "thirst", "weight loss", "fatigue"],
+    "info_en": "Diabetes occurs when blood sugar increases.",
+    "info_ta": "ரத்த சர்க்கரை அதிகரிக்கும் போது நீரிழிவு ஏற்படும்.",
+    "prevention_en": "Healthy diet & exercise.",
+    "prevention_ta": "சீரான உணவு மற்றும் உடற்பயிற்சி.",
+    "doctor_en": "Regular checkup needed.",
+    "doctor_ta": "மருத்துவர் பரிசோதனை அவசியம்."
+  },
+
+  "heat stroke": {
+    "symptoms": ["high temperature", "dizziness", "vomiting", "weakness"],
+    "info_en": "Heat stroke is caused by extreme heat exposure.",
+    "info_ta": "அதிக வெப்பத்தால் ஹீட் ஸ்ட்ரோக் ஏற்படும்.",
+    "prevention_en": "Stay hydrated & avoid sun.",
+    "prevention_ta": "நீர் அதிகம் குடிக்கவும், வெயிலில் செல்லாதீர்கள்.",
+    "doctor_en": "Emergency condition.",
+    "doctor_ta": "அவசர சிகிச்சை தேவை."
+  },
+
+  "covid": {
+    "symptoms": ["fever", "cold", "cough", "breath problem", "throat pain"],
+    "info_en": "COVID-19 is a viral respiratory infection.",
+    "info_ta": "கோவிட்-19 ஒரு வைரஸ் மூச்சுத் தொற்று.",
+    "prevention_en": "Mask, hygiene & distancing.",
+    "prevention_ta": "முக கவசம், சுத்தம், இடைவெளி.",
+    "doctor_en": "Consult doctor if breathing issue.",
+    "doctor_ta": "மூச்சு சிரமம் இருந்தால் மருத்துவரை அணுகவும்."
+  }
+}
