@@ -1,0 +1,37 @@
+# Environment variables and secrets
+.env
+.env.local
+.env.production
+
+# API keys and configuration files
+config/keys.py
+secrets.py
+*.key
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Flask instance folder
+instance/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite3
+
+# Node modules (if any)
+node_modules/
