@@ -1,11 +1,15 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, session
+import os
 from groq import Groq
 
 app = Flask(__name__)
+app.secret_key = "super_secret_key"   # you can change it
 
-client = Groq(api_key="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")
+# ---- USE ENV VARIABLE (Render safe) ----
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 MODEL = "llama-3.1-8b-instant"
+
 
 def ask_ai(message, lang):
     try:
@@ -13,7 +17,7 @@ def ask_ai(message, lang):
             prompt = (
                 "You are a polite medical awareness assistant. "
                 "Do NOT diagnose diseases. "
-                "Explain in simple English, suggest prevention, "
+                "Explain in simple English, suggest prevention tips "
                 "and when to see a doctor. "
                 f"User: {message}"
             )
@@ -50,5 +54,6 @@ def chat():
     return jsonify({"reply": reply})
 
 
+# ---- Render Compatible Server Run ----
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
